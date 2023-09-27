@@ -1,12 +1,20 @@
 import { AiTwotoneStar } from "react-icons/ai";
 import './filterbutton.css'
 
-const FilterButton = ({title, onPress}) => {
+const FilterButtonUnselec = ({title, onPress}) => {
   return (
-    <div className="FilterButton" onClick={onPress}>
+    <div className="FilterButtonUnselec" onClick={onPress}>
         {title}
     </div>
   );
 };
 
-export default FilterButton;
+const FilterButtonSelec = ({title, onPress}) => {
+  return (
+    <div className="FilterButtonSelec" onClick={onPress}>
+        {title}
+    </div>
+  );
+};
+
+export { FilterButtonSelec, FilterButtonUnselec} ;
