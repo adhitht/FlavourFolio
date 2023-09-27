@@ -40,6 +40,7 @@ body {
 .main-page-content {
   display: flex;
   justify-content: space-between;
+  height: 100vh;
 }
 .main-page2{
   height: 100vh;
