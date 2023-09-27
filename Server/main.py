@@ -1,10 +1,12 @@
 from fastapi import FastAPI, Depends, HTTPException
 from authlib.integrations.starlette_client import OAuth
 from sqlalchemy.orm import Session
+from schemas import User_reviews 
 app = FastAPI()
 oauth = OAuth()
 from config import SessionLocal
 from models import User
+import crud
 def get_db():
     db = SessionLocal()
     try:
@@ -57,3 +59,15 @@ async def auth(request,db: Session = Depends(get_db)):
     profile_photo_url = fetch_profile_photo(token['access_token'])
     db.commit()
     return {"user_info": user , "profile_photo_url": profile_photo_url}
+
+
+@app.post("/review")
+async def review(user_review: User_reviews, db: Session = Depends(get_db)):
+    crud.user_review(db, user_review)
+    response_data = {
+        "status": "Ok",  
+        "code": "200",
+        "message": "user_review created successfully",
+        "result": None  
+    }
+    return response_data

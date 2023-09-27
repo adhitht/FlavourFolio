@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import BgImage from "../assets/bgimage.png";
 import searchIcon from "../assets/search-icon.png";
 import FilterButton from "../components/FilterButton";
+import "../styles/homepage.css"
 const HomePage = () => {
   return (
     <>
@@ -40,6 +41,11 @@ const HomePage = () => {
       </div>
       <div className="main-page2">
         <FilterButton title="Buy"/>
+        <div className="card_div">
+            <div className="card1"></div>
+            <div className="card2"></div>
+            <div className="card3"></div>
+        </div>
       </div>
     </>
   );
