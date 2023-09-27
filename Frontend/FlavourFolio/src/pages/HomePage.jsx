@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import BgImage from "../assets/bgimage.png";
 import searchIcon from "../assets/search-icon.png";
+import FilterButton from "../components/FilterButton";
 const HomePage = () => {
   return (
     <>
@@ -36,6 +37,9 @@ const HomePage = () => {
             <img src={BgImage} alt="bgimage" />
           </picture>
         </div>
+      </div>
+      <div className="main-page2">
+        <FilterButton title="Buy"/>
       </div>
     </>
   );

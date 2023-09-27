@@ -41,9 +41,13 @@ body {
   display: flex;
   justify-content: space-between;
 }
+.main-page2{
+  height: 100vh;
+}
+
 .content {
   display: flex;
-  margin-top: 16rem;
+  margin-top: 12rem;
   margin-left: 4rem;
   flex-direction: column;
   width: 600px;
