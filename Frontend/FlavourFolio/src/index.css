@@ -120,6 +120,12 @@ body {
 }
 
 
+@media screen and (max-width:1500px) {
+.image .bgImage{
+  display: none;
+}
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

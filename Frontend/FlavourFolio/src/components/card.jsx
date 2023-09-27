@@ -1,21 +1,22 @@
 import {AiTwotoneStar} from 'react-icons/ai'
 
-const card = (Name,Location,Rating,numberOfReviews,tags,picture) => {
-    const tagsString = tags.join(".");
+const Card = (data) => {
+  
+  const tagsString = data.tags ? data.tags.join(', ') : '';
+    console.log("data:",data);
   return (
     <div className="card ">
-      <picture>
-        <img src={picture} alt="image.png" />
-      </picture>
+        <img src={data.picture} alt="image.png" />
+        {console.log("picture:",data.picture)}
       <div className="flex flex-col">
-        <h2>{Name}+,+{Location}</h2>
+        <h2>{data.Name}+,+{data.Location}</h2>
         <div className="flex">
         <span className='w-2 h-4 bg-[#229B44]'>
             <AiTwotoneStar/>
-            {Rating}
+            {data.Rating}
         </span>
         <span>
-            {numberOfReviews}+ Reviews
+            {data.numberOfReviews}+ Reviews
         </span>
         </div>
         <div>
@@ -26,4 +27,4 @@ const card = (Name,Location,Rating,numberOfReviews,tags,picture) => {
   )
 }
 
-export default card
+export default Card
