@@ -1,8 +1,6 @@
 import React from 'react';
 import SingleReviewCard from './singleReviewCard';
 import '../styles/reviewComponentStyles.css';
-import CommentCard from './CommentCard.jsx';
-
 const ReviewList = (reviews) => {
     return (
         <div className="review-list">
