@@ -73,7 +73,6 @@ async def auth(request,db: Session = Depends(get_db)):
     db.commit()
     return {"user_info": user , "profile_photo_url": profile_photo_url}
 
-
 @app.post("/review")
 async def review(user_review: User_reviews, db: Session = Depends(get_db)):
     crud.user_review(db, user_review)
@@ -84,3 +83,7 @@ async def review(user_review: User_reviews, db: Session = Depends(get_db)):
         "result": None  
     }
     return response_data
+
+@app.get("/getreviews")
+async def getreviews(db: Session = Depends(get_db)):
+    db.get()

@@ -76,14 +76,12 @@ const HomePage = () => {
         })}
       </div>
       <div className="flex-wrap card_div">
-        <Link to='/restaurant'>
         <ReviewCard data={cardData}/>
         <ReviewCard data={cardData}/>
         <ReviewCard data={cardData}/>
         <ReviewCard data={cardData}/>
         <ReviewCard data={cardData}/>
         <ReviewCard data={cardData} />
-        </Link>
       </div>
     </>
   );

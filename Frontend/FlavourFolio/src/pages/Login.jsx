@@ -4,7 +4,7 @@ import axios from 'axios'
 const Login = () => {
   const handleLogin = async () => {
     console.log("Signing In");
-    const { data } = await axios.post("http://localhost:8000/login");
+    const { data } = await axios.get("http://localhost:8000/login");
     console.log(data);
   };
   return (
