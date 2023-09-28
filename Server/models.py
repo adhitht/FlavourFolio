@@ -15,6 +15,7 @@ class User(Base):
     profile_photo_url = Column(String)
 
     user_table = relationship("User_review",back_populates="user_review")
+
 class User_review(Base):
      __tablename__ = "user_review"  
      id=Column(Integer, primary_key=True, index=True)
@@ -25,6 +26,5 @@ class User_review(Base):
      cuisine=Column(JSONB)
      review=Column(String)
      sentimental_review=Column(Float)
-
 
      user_review = relationship("User",back_populates="user_table")

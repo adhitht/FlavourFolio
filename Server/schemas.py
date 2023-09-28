@@ -1,11 +1,10 @@
-from typing import List, Optional, Generic, TypeVar
-from pydantic import BaseModel , Field,EmailStr 
+from datetime import date
+from typing import Generic, List, Optional, TypeVar
+
+from pydantic import BaseModel, EmailStr, Field
 from pydantic.generics import GenericModel
-from datetime import date 
 
-from pydantic import BaseModel
 T = TypeVar('T')
-
 
 class User_reviews(BaseModel):
     
