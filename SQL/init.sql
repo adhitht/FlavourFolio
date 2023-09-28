@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS folio;
+
+CREATE TABLE IF NOT EXISTS folio.users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255),
+  description TEXT
+);
+
+CREATE TABLE IF NOT EXISTS folio.users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255),
+  description TEXT
+);
