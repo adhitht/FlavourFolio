@@ -10,7 +10,7 @@ import "../styles/homepage.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Rating from "../components/rating";
-import ReviewCard from '../components/ReviewCard'
+import ReviewCard from "../components/ReviewCard";
 
 const HomePage = () => {
   const [filterTitles, setFilterTitles] = useState([]);
@@ -25,28 +25,24 @@ const HomePage = () => {
       });
   }, []);
 
-  const cardData ={
-    Name: "Tatva ",
+  const cardData = {
+    Name: "Tatva",
     Location: "Jubilee Hills",
     Rating: 4.23,
     numberOfReviews: 250,
-    tags: ['Chinese', 'Continental', 'Italic'],
-    picture: "https://etimg.etb2bimg.com/photo/75161189.cms"
+    tags: ["Chinese", "Continental", "Italic"],
+    picture: "https://etimg.etb2bimg.com/photo/75161189.cms",
   };
   return (
     <>
       <Navbar />
       <div className="main-page-content">
-        <div className="content">
+        <div className="content lg:mx-16">
           <span className="black">Flavors</span>
           <span className="red">Unleashed,</span>
           <span className="black">Stories </span>
           <span className="purple">Unfolded</span>
-          <div className="searchBox w-[400px]  bg-[#D9D9D9] rounded-full">
-            <form
-              method="post"
-              className="flex justify-between w-full h-16 rounded-full"
-            >
+          <div className="searchBox bg-[#D9D9D9]  flex justify-between w-full h-16 rounded-full">
               <input
                 type="text"
                 name="Search"
@@ -59,53 +55,31 @@ const HomePage = () => {
                   <img src={searchIcon} alt="searchIcon" />
                 </div>
               </button>
-            </form>
           </div>
         </div>
         <div className="image">
           <picture>
-            <img src={BgImage} alt="bgimage" className="bgImage"/>
+            <img src={BgImage} alt="bgimage" className="bgImage" />
           </picture>
         </div>
       </div>
-      {/* <div className="main-page2">
-        <FilterButton title="Buy"/>
-       
-      </div> */}
-      <div style={{ margin: "50px" }}>
-        <div className="filters_div">
-          <FilterButtonSelec title="Filter" />
-
-          <FilterButtonUnselec title="Top Rated" />
-          <FilterButtonUnselec title="Most Relevancy" />
-          {filterTitles.map((title, index) => {
-            <FilterButtonUnselec title={title} key={index} />;
-          })}
-        </div>
-
-        <div className="card_div">
-          <div className="card1">
-            <img
-              src="https://etimg.etb2bimg.com/photo/75161189.cms"
-              alt="image of an hotel"
-            />
-            <div className="hotel_details">
-              <p>Tatva ,Jubilee Hills</p>
-              <div style={{ display: "flex", gap: "5px" }}>
-                <Rating />
-                <p>250+ Reviews</p>
-              </div>
-              <p>Chinese.Continental.Italic</p>
-            </div>
-          </div>
-          <div className="card2"></div>
-          <div className="card3"></div>
-        </div>
+      <div className="filters_div w-[100%] my-10 overflow-y-scroll">
+        <FilterButtonSelec title="Filter" />
+        <FilterButtonUnselec title="Top Rated" />
+        <FilterButtonUnselec title="Most Relevancy" />
+        {filterTitles.map((title, index) => {
+          <FilterButtonUnselec title={title} key={index} />;
+        })}
       </div>
-      <div className="flex-wrap card_div my-11 justify-evenly">
-      <ReviewCard data={cardData}/>
-      <ReviewCard data={cardData}/>
-      <ReviewCard data={cardData}/>       
+      <div className="flex-wrap card_div">
+        <ReviewCard data={cardData} />
+        <ReviewCard data={cardData} />
+        <ReviewCard data={cardData} />
+        <ReviewCard data={cardData} />
+        <ReviewCard data={cardData} />
+        <ReviewCard data={cardData} />
+        <ReviewCard data={cardData} />
+
       </div>
     </>
   );

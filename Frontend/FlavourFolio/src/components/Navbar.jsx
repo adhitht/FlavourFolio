@@ -3,17 +3,17 @@ import {BsFillPersonFill} from 'react-icons/bs'
 
 const Navbar = () => {
   return (
-    <nav className='navbar'>
+    <nav className='navbar h-[72px]'>
       <Link to ='/'>  
         <div className='logo'>
-        <h2>Falvourfolio</h2>
+        <h2>Flavourfolio</h2>
         </div>
       </Link>
-      <Link to='/Login'>
+      {/* <Link to='/Login'>
         <div className="profile-icon-main-page">
           <BsFillPersonFill size={'90%'} color='rgb(0,0,0,0.3)'/>
         </div>
-      </Link>
+      </Link> */}
     </nav>
   )
 }

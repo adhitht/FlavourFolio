@@ -1,10 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Amaranth&display=swap"); /*amaranth*/
 @import url("https://fonts.googleapis.com/css2?family=Amaranth&family=Black+Han+Sans&display=swap"); /*black han sans */
-@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Black+Han+Sans&family=Inter:wght@500&display=swap');/*inter */
-
+@import url("https://fonts.googleapis.com/css2?family=Amaranth&family=Black+Han+Sans&family=Inter:wght@500&display=swap"); /*inter */
 
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 body {
@@ -25,7 +24,7 @@ body {
 .navbar {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 2rem;
+  padding: 1rem 2rem;
 }
 .profile-icon-main-page {
   height: 40px;
@@ -40,90 +39,53 @@ body {
 .main-page-content {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: calc(100vh - 72px);
+}
+.main-page2 {
   height: 100vh;
 }
-.main-page2{
-  height: 100vh;
-}
-
-.content {
-  display: flex;
-  margin-top: 12rem;
-  margin-left: 4rem;
-  flex-direction: column;
-  width: 600px;
-  height: auto;
-}
-.content .black {
-  color: #000;
-  font-family: Black Han Sans;
-  font-size: 70px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-.content .red {
-  color: #ff4848;
-  font-family: Black Han Sans;
-  font-size: 86px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-.content .purple {
-  color: #6271fa;
-  font-family: Black Han Sans;
-  font-size: 86px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-.search-bar::placeholder{
-  font-size:24px;
-  color:#696969;
-}
-.searchBox{
-  box-shadow: 3px 5px 5px rgb(125,125,125,0.7); 
-}
-
-
-
 
 /* Login Page */
 .login-with-google-btn {
-  transition: background-color .3s, box-shadow .3s;
-    
+  transition: background-color 0.3s, box-shadow 0.3s;
+
   padding: 12px 16px 12px 42px;
   border: none;
   border-top-right-radius: 6px;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px ;
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
   width: 200px;
   color: white;
   font-size: 14px;
   font-weight: 500;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
-  
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
   background-repeat: no-repeat;
   background-position: 12px 11px;
 
   &:focus {
     outline: none;
-    box-shadow: 
-      0 -1px 0 rgba(0, 0, 0, .04),
-      0 2px 4px rgba(0, 0, 0, .25),
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25),
       0 0 0 3px #c8dafc;
   }
 }
 
-
-@media screen and (max-width:1500px) {
-.image .bgImage{
-  display: none;
-}
+@media screen and (max-width: 1500px) {
+  .image .bgImage {
+    display: none;
+  }
+  .main-page-content {
+    justify-content: center;
+    text-align: center;
+  }
+  .searchBox {
+    align-self: center;
+  }
 }
 
 @tailwind base;
