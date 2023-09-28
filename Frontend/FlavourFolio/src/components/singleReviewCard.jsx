@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/singleReviewCardStyles.css'
 
-const Card = ({ content, photo, name, rating, emoji }) => {
+const SingleReviewCard = ({ content, photo, name, rating, emoji }) => {
     return (
         <div className="card-container">
             <div className="card">
@@ -28,7 +28,7 @@ const Card = ({ content, photo, name, rating, emoji }) => {
     );
 }
 
-Card.propTypes = {
+SingleReviewCard.propTypes = {
     content: PropTypes.string.isRequired,
     photo: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -36,4 +36,4 @@ Card.propTypes = {
     emoji: PropTypes.string.isRequired
 };
 
-export default Card;
+export default SingleReviewCard;
