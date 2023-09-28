@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './card.jsx';
+import SingleReviewCard from './singleReviewCard';
 import '../styles/reviewComponentStyles.css';
 
 const ReviewList = ({ reviews }) => {
@@ -7,7 +7,7 @@ const ReviewList = ({ reviews }) => {
         <div className="review-list">
             <h1 className="review-heading">Reviews</h1>
             {reviews.map((review, index) => (
-                <Card 
+                <SingleReviewCard 
                     key={index}
                     content={review.content}
                     photo={review.photo}
