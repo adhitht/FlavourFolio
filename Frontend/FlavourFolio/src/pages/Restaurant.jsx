@@ -83,7 +83,7 @@ const Restaurant = () => {
             <div className="flex flex-col">
               <div className="flex items-center justify-between mt-2">
                 <span className="text-xl font-semibold">Excellent</span>
-                <div className="w-[300px] h-4 bg-[#D9D9D9] rounded-md ml-2  ">
+                <div className="w-[300px] h-3 bg-[#D9D9D9] rounded-md ml-2  ">
                   <div
                     className="h-full bg-[#31962F] rounded-s-md"
                     style={{ width: `${(stars[5] / reviewTotal) * 600}px` }}
@@ -92,7 +92,7 @@ const Restaurant = () => {
               </div>
               <div className="flex items-center justify-between mt-2">
                 <span className="text-xl font-semibold">Good</span>
-                <div className="w-[300px] h-4 bg-[#D9D9D9] rounded-md ml-2">
+                <div className="w-[300px] h-3 bg-[#D9D9D9] rounded-md ml-2">
                   <div
                     className="h-full bg-[#7DB77C] rounded-s-md"
                     style={{ width: `${(stars[4] / reviewTotal) * 600}px` }}
@@ -102,7 +102,7 @@ const Restaurant = () => {
 
               <div className="flex items-center justify-between mt-2">
                 <span className="text-xl font-semibold">Average</span>
-                <div className="w-[300px] h-4 bg-[#D9D9D9] rounded-md ml-2">
+                <div className="w-[300px] h-3 bg-[#D9D9D9] rounded-md ml-2">
                   <div
                     className="h-full bg-[#E7DD00] rounded-s-md"
                     style={{ width: `${(stars[3] / reviewTotal) * 600}px` }}
@@ -111,7 +111,7 @@ const Restaurant = () => {
               </div>
               <div className="flex items-center justify-between mt-2">
                 <span className="text-xl font-semibold">Below Average</span>
-                <div className="w-[300px] h-4 bg-[#D9D9D9] rounded-md ml-2">
+                <div className="w-[300px] h-3 bg-[#D9D9D9] rounded-md ml-2">
                   <div
                     className="h-full bg-[#DA7314] rounded-s-md"
                     style={{ width: `${(stars[2] / reviewTotal) * 600}px` }}
@@ -120,7 +120,7 @@ const Restaurant = () => {
               </div>
               <div className="flex items-center justify-between mt-2">
                 <span className="text-xl font-semibold">Poor</span>
-                <div className="w-[300px] h-4 bg-[#D9D9D9] rounded-md ml-2">
+                <div className="w-[300px] h-3 bg-[#D9D9D9] rounded-md ml-2">
                   <div
                     className="h-full bg-[#DF0000] rounded-s-md"
                     style={{ width: `${(stars[1] / reviewTotal) * 600}px` }}
