@@ -1,12 +1,19 @@
-from fastapi import FastAPI, Depends, HTTPException
 from authlib.integrations.starlette_client import OAuth
+from fastapi import Depends, FastAPI, HTTPException
+from schemas import User_reviews
 from sqlalchemy.orm import Session
-from schemas import User_reviews 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
 oauth = OAuth()
-from config import SessionLocal
-from models import User
+import os
+
 import crud
+from config import SessionLocal
+from dotenv import load_dotenv
+from models import User
+
+load_dotenv()
 def get_db():
     db = SessionLocal()
     try:
@@ -14,23 +21,30 @@ def get_db():
     finally:
         db.close()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace with your list of allowed origins
+    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers in the request
+)
 
 oauth.register(
     name="google",
-    client_id="219314185678-0pk1puakrjrokedjtof3nuk4o9dv0iq8.apps.googleusercontent.com",
-    client_secret="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",
+    client_id=os.getenv('CLIENT_ID'),
+    client_secret=os.getenv('CLIENT_SECRET'),
     authorize_url="https://accounts.google.com/o/oauth2/auth",
      authorize_params={
         "access_type": "offline",
         "prompt": "consent",
         "scope": "openid email profile https://www.googleapis.com/auth/userinfo.profile",
         "response_type": "code",
-        "redirect_uri": "https://localhost/login/callback",
+        "redirect_uri": "http://localhost:8000/login/callback",
     },
 )
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Hello World", "client_id": os.getenv('CLIENT_ID'),"client_secret": os.getenv('CLIENT_SECRET')}
+
 @app.post("/login")
 async def login(request):
     redirect_uri = url_for("auth", _external=True)
@@ -42,9 +56,8 @@ def fetch_profile_photo(access_token):
     response = requests.get(profile_url, headers=headers)
     data = response.json()
     return data.get("image", {}).get("url")
+
 @app.post("/login/callback")
-
-
 async def auth(request,db: Session = Depends(get_db)):
     token = await oauth.google.authorize_access_token(request)
     user = await oauth.google.parse_id_token(request, token)
