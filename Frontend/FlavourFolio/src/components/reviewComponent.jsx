@@ -1,7 +1,7 @@
 import React from 'react';
 import SingleReviewCard from './singleReviewCard';
 import '../styles/reviewComponentStyles.css';
-const ReviewList = (reviews) => {
+const ReviewList = ({reviews}) => {
     return (
         <div className="review-list">
             <h1 className="review-heading">Reviews</h1>
