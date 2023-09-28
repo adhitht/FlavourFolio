@@ -57,7 +57,7 @@
 .rating-container {
     display: flex;
     align-items: center;
-    width: 48px;
+    width: 72px;
     height: 28px;
     background-color: #229B44;
     border-radius: 7px;
@@ -72,6 +72,7 @@
 }
 
 .rating {
+    background-color: transparent;
     color: white;
     font-size: 16px;
     font-size: 20px;
