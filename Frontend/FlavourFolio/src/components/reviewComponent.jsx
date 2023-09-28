@@ -11,6 +11,7 @@ const ReviewList = ({reviews}) => {
                     photo={review.photo}
                     name={review.display_name}
                     rating={review.rating}
+                    sentimental_score={review.sentimental_score}
                 />
             ))}
         </div>

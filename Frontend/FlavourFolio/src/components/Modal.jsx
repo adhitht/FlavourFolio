@@ -4,7 +4,7 @@ import { Rating } from 'react-simple-star-rating'
 import { useState } from "react"
 import axios from "axios"
 
-const Modal=({closeModal})=>{
+const Modal=({closeModal, res_name})=>{
     const [rating, setRating] = useState(0)
     const handleClick = (newRating) => {
         setRating(newRating);
@@ -16,7 +16,7 @@ const Modal=({closeModal})=>{
         try {
             const postData = {
                 user_id: 1,
-                hotel_name: "Shadab Restaurant",
+                hotel_name: res_name,
                 review: review,
                 rating: rating
             }

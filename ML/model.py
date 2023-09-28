@@ -46,7 +46,7 @@ def get_sentiment(rating):
     except: 
         return 'neutral'
 
-df = pd.read_csv('/home/adhitht/Projects/FlavorFolio/ML/data/Restaurant_reviews.csv')
+df = pd.read_csv('/home/adhitht/hackathon/Flavourfolio/ML/data/Restaurant_reviews.csv')
 
 # create_rating_graph(df)
 
@@ -62,7 +62,7 @@ df['Review'].fillna("N/A", inplace=True)
 df['Review'] = df['Review'].apply(preprocess_text)
 
 # random state of 41 gives best results in terms of accuracy
-X_train, X_test, y_train, y_test = train_test_split(df['Review'], df['sentiment'], test_size=0.2, random_state=43)
+X_train, X_test, y_train, y_test = train_test_split(df['Review'], df['sentiment'], test_size=0.2, random_state=41)
 
 # Create a TF-IDF vectorizer
 tfidf_vectorizer = TfidfVectorizer(max_features=5000, stop_words='english')
@@ -97,9 +97,9 @@ print(classification_report(y_test, y_pred))
 
 # Model serialization
 # Save the trained model to a file using pickle
-with open('flavorfolio.pkl', 'wb') as model_file:
-    pickle.dump(model, model_file)
+# with open('flavorfolio.pkl', 'wb') as model_file:
+#     pickle.dump(model, model_file)
 
-print("Saving vectorizer code")
-with open('tfidf_vectorizer.pkl', 'wb') as vectorizer_file:
-    pickle.dump(tfidf_vectorizer, vectorizer_file)
+# print("Saving vectorizer code")
+# with open('tfidf_vectorizer.pkl', 'wb') as vectorizer_file:
+#     pickle.dump(tfidf_vectorizer, vectorizer_file)

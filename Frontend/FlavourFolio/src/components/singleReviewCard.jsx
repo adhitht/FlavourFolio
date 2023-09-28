@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/singleReviewCardStyles.css'
 
-const SingleReviewCard = ({ content, photo, name, rating, emoji }) => {
+const SingleReviewCard = ({ content, photo, name, rating, emoji, sentimental_score }) => {
     return (
         <div className="card-container">
             <div className="card">
                 <p>{content}</p>
                 <div className="feedback-line">
-                    <span className="emoji">😊</span>
-                    <span className="feedback-text">Riya feels good about this place.</span>
+                    <span className="emoji">{sentimental_score == 1 ? '😊' : '😠'} </span>
+                    <span className="feedback-text">{name} {sentimental_score == 1 ? 'feels' : 'doesn\'t feel'} good about this place.</span>
                 </div>
                 <div className="user-profile">
                     <div className="photo-container">

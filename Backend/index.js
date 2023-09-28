@@ -134,8 +134,7 @@ app.post("/review", (req, res) => {
   const user_id = req.body.user_id;
   const hotel_name = req.body.hotel_name;
 
-  const inputData = req.body.inputData;
-  const pythonProcess = spawn("python3", ["sentiment_analyser.py", inputData]);
+  const pythonProcess = spawn("python3", ["sentiment_analyser.py", review]);
   pythonProcess.stdout.on("data", (data) => {
     const result = data.toString();
     if(result == "positive\n"){
@@ -148,7 +147,6 @@ app.post("/review", (req, res) => {
     ('${user_id}', '${rating}',' ${review}','${new Date().toISOString()}','{"data": "food"}', '${sentimental_score}', '${hotel_name}')`;
     cur.query(newquery, (error, results) => {
       if (error) throw error;
-      console.log("New Review Created");
       res.json({"success": true})
     });
     
@@ -192,7 +190,7 @@ app.get("/getreviews", async (req,res) => {
   r.sentimental_score,
    u.display_name, 
    u.avatar_url as photo
-    FROM reviews AS r JOIN users AS u ON r.user_id = u.user_id;`
+    FROM reviews AS r JOIN users AS u ON r.user_id = u.user_id WHERE hotel_name='${req.query.hotel_name}';`
   console.log(query)
   cur.query(query, (error, results) => {
     if (error) throw error;

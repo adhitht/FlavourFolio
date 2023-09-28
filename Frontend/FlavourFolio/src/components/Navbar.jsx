@@ -15,10 +15,11 @@ const Navbar = () => {
         </div>
       </Link>
       <Link to='/Login'>
-        <div className="profile-icon-main-page">
         {authcookie ? 
-          <BsFillPersonFill size={'90%'} color='rgb(0,0,0,0.3)'/> : <p>Sign in with google</p>}
+        <div className="profile-icon-main-page">
+          <BsFillPersonFill size={'90%'} color='rgb(0,0,0,0.3)'/> 
         </div>
+          : <div className='FilterButtonSelec'>Sign in</div>}
       </Link>
     </nav>
   )

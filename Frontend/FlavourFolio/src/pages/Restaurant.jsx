@@ -154,7 +154,7 @@ useEffect(()=> {
         Post Review
       </div>
      
-      {isModalOpen && <Modal closeModal={()=> {setIsModalOpen(false)}} />}
+      {isModalOpen && <Modal res_name={restaurant_name} closeModal={()=> {setIsModalOpen(false)}} />}
      
     </>
     
