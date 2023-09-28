@@ -101,12 +101,13 @@ app.get(
       }','${new Date().toISOString()}','${new Date().toISOString()}')`;
       cur.query(newquery, (error, results) => {
         if (error) throw error;
+        const user_id = results.rows[0].user_id;
+        console.log("USER ID IS", user_id)
         console.log("New User Created");
       });
     }
-    console.log(req.user._json.toString())
     const jwttoken = jwt.sign(req.user._json.toString(), "flavourfolio_secret");
-    res.cookie("authtoken", jwttoken, { maxAge: 432000, httpOnly: true });
+    res.cookie("authtoken", jwttoken, { maxAge: 432000, httpOnly: false });
     res.redirect("http://localhost:5173");
   }
 );
@@ -142,11 +143,9 @@ app.post("/review", (req, res) => {
     }else{ 
       sentimental_score = 0
     }
-    console.log("SENTIMENTAL SCORE", sentimental_score)
 
     const newquery = `INSERT INTO reviews(user_id, rating, review, created_at, tags, sentimental_score, hotel_name) VALUES 
     ('${user_id}', '${rating}',' ${review}','${new Date().toISOString()}','{"data": "food"}', '${sentimental_score}', '${hotel_name}')`;
-    console.log("THE QUERY IS ", newquery);
     cur.query(newquery, (error, results) => {
       if (error) throw error;
       console.log("New Review Created");
