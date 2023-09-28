@@ -1,7 +1,7 @@
 import {AiTwotoneStar} from 'react-icons/ai'
 
 const Card = (data) => {
-  
+  console.log("asdad",data)
   const tagsString = data.tags ? data.tags.join(', ') : '';
     console.log("data:",data);
   return (
