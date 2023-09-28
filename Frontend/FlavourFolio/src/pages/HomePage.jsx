@@ -11,8 +11,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Rating from "../components/rating";
 import ReviewCard from "../components/ReviewCard";
+import {Link } from "react-router-dom";
 
 const HomePage = () => {
+
   const [filterTitles, setFilterTitles] = useState([]);
   useEffect(() => {
     axios
@@ -34,6 +36,7 @@ const HomePage = () => {
     picture: "https://etimg.etb2bimg.com/photo/75161189.cms",
     stars:{"5": 65, "4": 90, "3": 89, "2": 76,"1": 90}
   };
+
   return (
     <>
       <Navbar />
@@ -73,13 +76,14 @@ const HomePage = () => {
         })}
       </div>
       <div className="flex-wrap card_div">
+        <Link to='/restaurant'>
+        <ReviewCard data={cardData}/>
+        <ReviewCard data={cardData}/>
+        <ReviewCard data={cardData}/>
+        <ReviewCard data={cardData}/>
+        <ReviewCard data={cardData}/>
         <ReviewCard data={cardData} />
-        <ReviewCard data={cardData} />
-        <ReviewCard data={cardData} />
-        <ReviewCard data={cardData} />
-        <ReviewCard data={cardData} />
-        <ReviewCard data={cardData} />
-        <ReviewCard data={cardData} />
+        </Link>
       </div>
     </>
   );

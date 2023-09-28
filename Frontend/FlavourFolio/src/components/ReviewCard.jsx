@@ -1,18 +1,13 @@
-import { useNavigate } from 'react-router-dom';
+
 import '../styles/homepage.css';
 
-const Card = (data) => { 
-  const { Name, Location, Rating, numberOfReviews, tags, picture } = data.data;
+const Card = ({data}) => {
+  const { Name, Location, Rating, numberOfReviews, tags, picture } = data;
   const tagsString = tags ? tags.join("•") : "";
-  const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate('/restaurant', { restaurantData: data });
-  };
-
-  return (  
-    <div onClick={handleClick} className="review-card my-10 card mx-6 aspect-[.9] bg-[#E8E3E3] rounded-[30px] cursor-pointer">
-      <img src={picture} alt={Name} className="rounded-t-[30px] w-full h-auto" />
+  return (
+    <div className="review-card my-10 card mx-6 aspect-[.9] bg-[#E8E3E3] rounded-[30px] cursor-pointer">
+     <img src={picture} alt={Name} className="rounded-t-[30px] w-full h-auto" />
       <div className="flex flex-col px-4 ml-2">
         <br/>
         <h2 className="mb-2 text-3xl font-semibold">
