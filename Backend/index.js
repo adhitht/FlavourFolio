@@ -157,10 +157,15 @@ app.post("/review", (req, res) => {
       .status(500)
       .json({ error: "An error occurred while processing the request." });
   });
-
-
-
 });
+
+app.get("/restaurants", async (req,res) => {
+  query = 'SELECT hotel_name,(ARRAY_AGG(picture ORDER BY picture))[1] AS picture, COUNT(rating), AVG(rating) AS average_rating, AVG(sentimental_score) AS average_sentiment_score FROM reviews GROUP BY hotel_name;'
+  cur.query(query, (error, results) => {
+    if (error) throw error;
+    res.send(results.rows)
+  });
+})
 
 app.get("/getuser", verifyUser, (req, res)=> {
   res.json({"data": res.locals.userdata})

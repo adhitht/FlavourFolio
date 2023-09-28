@@ -14,25 +14,35 @@ import ReviewCard from "../components/ReviewCard";
 import {Link } from "react-router-dom";
 
 const HomePage = () => {
+  const [restaurants, setrestaurants] = useState([])
+  useEffect(()=> {
+    const fetchRestaurants = async () => {
+      const { data } = await axios.get("http://localhost:8000/restaurants")
+      console.log(data)
+      setrestaurants(data)
+      console.log(restaurants)
+    }
+    fetchRestaurants()
+  },[])
 
   const [filterTitles, setFilterTitles] = useState([]);
-  useEffect(() => {
-    axios
-      .get("someapi")
-      .then((response) => {
-        setFilterTitles(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching filter titles:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("someapi")
+  //     .then((response) => {
+  //       setFilterTitles(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching filter titles:", error);
+  //     });
+  // }, []);
 
   const cardData = {
     Name: "Tatva",
     Location: "Jubilee Hills",
     Rating: 4.23,
     numberOfReviews: 250,
-    tags: ["Chinese", "Continental", "Italic"],
+    // tags: ["Chinese", "Continental", "Italic"],
     picture: "https://etimg.etb2bimg.com/photo/75161189.cms",
     stars:{"5": 65, "4": 90, "3": 89, "2": 76,"1": 90}
   };
@@ -76,12 +86,14 @@ const HomePage = () => {
         })}
       </div>
       <div className="flex-wrap card_div">
+      {restaurants && restaurants.map((restaurant) => {
+        return <ReviewCard data={restaurant}/>
+      })}
+        {/* <ReviewCard data={cardData}/>
         <ReviewCard data={cardData}/>
         <ReviewCard data={cardData}/>
         <ReviewCard data={cardData}/>
-        <ReviewCard data={cardData}/>
-        <ReviewCard data={cardData}/>
-        <ReviewCard data={cardData} />
+        <ReviewCard data={cardData} /> */}
       </div>
     </>
   );
