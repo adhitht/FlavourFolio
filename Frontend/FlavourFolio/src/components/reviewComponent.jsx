@@ -1,4 +1,3 @@
-import React from 'react';
 import SingleReviewCard from './singleReviewCard';
 import '../styles/reviewComponentStyles.css';
 const ReviewList = ({reviews}) => {
