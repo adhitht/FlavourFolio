@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import ReviewList from "../components/reviewComponent";
+import {AiOutlineMessage} from 'react-icons/ai'
 
 const Restaurant = () => {
   const cardData = {
@@ -136,8 +137,15 @@ const Restaurant = () => {
           </picture>
         </div>
       </div>
-      <div>
+
+      {/* Reviews */}
+      <div >
         <ReviewList reviews={reviews} />
+      </div>
+
+      <div className="right-10 fixed bottom-10 flex gap-3 text-2xl items-center	bg-sky-500 pd-10 text-white rounded-lg p-3 shadow-2xl">
+      <AiOutlineMessage size={40}/>
+        Post Review
       </div>
     </>
   );
