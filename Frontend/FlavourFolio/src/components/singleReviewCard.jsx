@@ -8,7 +8,7 @@ const SingleReviewCard = ({ content, photo, name, rating, emoji }) => {
             <div className="card">
                 <p>{content}</p>
                 <div className="feedback-line">
-                    <span className="emoji">{emoji}</span>
+                    <span className="emoji">😊</span>
                     <span className="feedback-text">Riya feels good about this place.</span>
                 </div>
                 <div className="user-profile">

@@ -142,12 +142,15 @@ app.post("/review", (req, res) => {
     }else{ 
       sentimental_score = 0
     }
+    console.log("SENTIMENTAL SCORE", sentimental_score)
 
-    const newquery = `INSERT INTO users (user_id, rating, review, created_at, tags, sentimental_score, hotel_name) VALUES 
-    ('${user_id}', '${rating}',' ${review}','${new Date().toISOString()}',{"hello"}, '${sentimental_score}', ${hotel_name})`;
+    const newquery = `INSERT INTO reviews(user_id, rating, review, created_at, tags, sentimental_score, hotel_name) VALUES 
+    ('${user_id}', '${rating}',' ${review}','${new Date().toISOString()}','{"data": "food"}', '${sentimental_score}', '${hotel_name}')`;
+    console.log("THE QUERY IS ", newquery);
     cur.query(newquery, (error, results) => {
       if (error) throw error;
-      console.log("New User Created");
+      console.log("New Review Created");
+      res.json({"success": true})
     });
     
   });
@@ -164,6 +167,37 @@ app.get("/restaurants", async (req,res) => {
   cur.query(query, (error, results) => {
     if (error) throw error;
     res.send(results.rows)
+  });
+})
+
+app.get("/getrestaurant", async (req,res) => {
+  console.log(req.query.hotel_name)
+  query = `SELECT hotel_name,(ARRAY_AGG(picture ORDER BY picture))[1] AS picture,COUNT(*) as numberofreviews, AVG(rating) as rating, COUNT(*) FILTER (WHERE rating = 1) AS count_rating_1,COUNT(*) FILTER (WHERE rating = 2) AS count_rating_2,COUNT(*) FILTER (WHERE rating = 3) AS count_rating_3,COUNT(*) FILTER (WHERE rating = 4) AS count_rating_4,COUNT(*) FILTER (WHERE rating = 5) AS count_rating_5, AVG(sentimental_score) AS sentimental_score FROM reviews WHERE hotel_name = '${req.query.hotel_name}' GROUP BY hotel_name;`
+  cur.query(query, (error, results) => {
+    if (error) throw error;
+    // if (results.rows.length === 0) {
+      // res.send({ "notFound": true });
+    // } else {
+      res.send(results.rows);
+    // }
+  });
+})
+
+app.get("/getreviews", async (req,res) => {
+  console.log(req.query.hotel_name)
+  query = `SELECT * from reviews WHERE hotel_name='${req.query.hotel_name}';`
+  query=`SELECT
+  r.rating,
+  r.review,
+  r.created_at AS review_created_at,
+  r.sentimental_score,
+   u.display_name, 
+   u.avatar_url as photo
+    FROM reviews AS r JOIN users AS u ON r.user_id = u.user_id;`
+  console.log(query)
+  cur.query(query, (error, results) => {
+    if (error) throw error;
+      res.send(results.rows);
   });
 })
 

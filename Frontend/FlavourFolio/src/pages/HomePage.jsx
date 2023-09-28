@@ -77,14 +77,14 @@ const HomePage = () => {
           </picture>
         </div>
       </div>
-      <div className="filters_div w-[100%] my-10 overflow-y-scroll">
+      {/* <div className="filters_div w-[100%] my-10 overflow-y-scroll">
         <FilterButtonSelec title="Filter" />
         <FilterButtonUnselec title="Top Rated" />
         <FilterButtonUnselec title="Most Relevancy" />
         {filterTitles.map((title, index) => {
           <FilterButtonUnselec title={title} key={index} />;
         })}
-      </div>
+      </div> */}
       <div className="flex-wrap card_div">
       {restaurants && restaurants.map((restaurant) => {
         return <ReviewCard data={restaurant}/>

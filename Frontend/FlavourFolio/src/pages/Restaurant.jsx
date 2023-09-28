@@ -2,37 +2,35 @@ import Navbar from "../components/Navbar";
 import ReviewList from "../components/reviewComponent";
 import {AiOutlineMessage} from 'react-icons/ai'
 import Modal from "../components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 const Restaurant = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-              
+  const { restaurant_name } = useParams();
   const openModal = () => {setIsModalOpen(true); };
+  const changeModal = () => {setIsModalOpen(!isModalOpen); };
+  const [res_details, setres_details] = useState()
+  const [reviews, setreviews] = useState()
 
-  
-  const closeModal = () => {setIsModalOpen(false); };
-
-  const handleSubmit = () => {openModal();};
-  const cardData = {
-    Name: "Tatva",
-    Location: "Jubilee Hills",
-    Rating: 4.23,
-    numberOfReviews: 250,
-    tags: ["Chinese", "Continental", "Italic"],
-    picture: "https://etimg.etb2bimg.com/photo/75161189.cms",
-    stars: { 5: 65, 4: 90, 3: 89, 2: 76, 1: 90 },
-  };
-  const { Name, Location, Rating, numberOfReviews, tags, picture, stars } =
-    cardData;
-  const tagsString = tags ? tags.join(" • ") : "";
-
-  // Calculate the total number of reviews from the stars object
-  let reviewTotal = 0;
-  for (const star in stars) {
-    reviewTotal += stars[star];
+useEffect(()=> {
+  const fetchDetails = async () => {
+    const {data} = await axios.get(`http://localhost:8000/getrestaurant?hotel_name=${restaurant_name}`)
+    console.log(data);
+    setres_details(data[0]);
   }
+  const fetchReviews = async () => {
+    const {data} = await axios.get(`http://localhost:8000/getreviews?hotel_name=${restaurant_name}`)
+    console.log(data);
+    setreviews(data);
+  }
+  fetchDetails();
+  fetchReviews();
+}, [])
 
-  console.log(reviewTotal);
-  const reviews = [
+
+  const reviews2 = [
     {
       content:
         "Great food and great atmosphere! The chicken tikka masala and garlic naan tasted as if they had come straight from India itself. Because I was so pleased with the entrie I ended up ordering the gulab jamun desert and mango lassi beverage and again I was nothing but pleased! Also the employees and management were all very attentive and they made sure we had everything we needed from beginning to end. The manager Matt personally came around even to check on our experience!",
@@ -70,21 +68,20 @@ const Restaurant = () => {
         <div className="flex flex-col justify-between w-[600px]">
           <section>
             <div className="pb-8 text-5xl font-bold mt-[-100px]">
-              {Name}, {Location}
+              {res_details && res_details.hotel_name}
             </div>
             <div className="flex items-center gap-3 mt-4 mb-2">
               <span className="w-[60px] bg-[#229B44] rounded-lg text-white flex p-[2px] ">
-                ★ {Rating}
+                ★ {res_details && (Number(res_details.rating)).toFixed(2)}
               </span>
               <span className="h-full text-2xl font-semibold leading-relaxed">
-                {numberOfReviews}+ Reviews
+                {res_details && res_details.numberofreviews}+ Reviews
               </span>
             </div>
             <div className="flex flex-col justify-start">
               <span className="my-2 text-xl font-semibold">
-                😄 {(Rating * 20).toFixed(1)}% people liked this restaurant
+                😄 {res_details && (Number(res_details.sentimental_score) * 100).toFixed(2)}% people liked this restaurant
               </span>
-              <span className="my-2 mb-4 text-xl font-semibold">{tagsString}</span>
             </div>
           </section>
           <section>
@@ -95,7 +92,7 @@ const Restaurant = () => {
                 <div className="w-[300px] h-3 bg-[#D9D9D9] rounded-md ml-2  ">
                   <div
                     className="h-full bg-[#31962F] rounded-s-md"
-                    style={{ width: `${(stars[5] / reviewTotal) * 600}px` }}
+                    style={{ width: `${ res_details && (Number(res_details.count_rating_5) / Number(res_details.numberofreviews)) * 600}px` }}
                   ></div>
                 </div>
               </div>
@@ -104,7 +101,7 @@ const Restaurant = () => {
                 <div className="w-[300px] h-3 bg-[#D9D9D9] rounded-md ml-2">
                   <div
                     className="h-full bg-[#7DB77C] rounded-s-md"
-                    style={{ width: `${(stars[4] / reviewTotal) * 600}px` }}
+                    style={{ width: `${ res_details && (Number(res_details.count_rating_4) / Number(res_details.numberofreviews)) * 600}px` }}
                   ></div>
                 </div>
               </div>
@@ -114,7 +111,7 @@ const Restaurant = () => {
                 <div className="w-[300px] h-3 bg-[#D9D9D9] rounded-md ml-2">
                   <div
                     className="h-full bg-[#E7DD00] rounded-s-md"
-                    style={{ width: `${(stars[3] / reviewTotal) * 600}px` }}
+                    style={{ width: `${ res_details && (Number(res_details.count_rating_3) / Number(res_details.numberofreviews)) * 600}px` }}
                   ></div>
                 </div>
               </div>
@@ -123,7 +120,7 @@ const Restaurant = () => {
                 <div className="w-[300px] h-3 bg-[#D9D9D9] rounded-md ml-2">
                   <div
                     className="h-full bg-[#DA7314] rounded-s-md"
-                    style={{ width: `${(stars[2] / reviewTotal) * 600}px` }}
+                    style={{ width: `${ res_details && (Number(res_details.count_rating_2) / Number(res_details.numberofreviews)) * 600}px` }}
                   ></div>
                 </div>
               </div>
@@ -132,7 +129,7 @@ const Restaurant = () => {
                 <div className="w-[300px] h-3 bg-[#D9D9D9] rounded-md ml-2">
                   <div
                     className="h-full bg-[#DF0000] rounded-s-md"
-                    style={{ width: `${(stars[1] / reviewTotal) * 600}px` }}
+                    style={{ width: `${ res_details && (Number(res_details.count_rating_1) / Number(res_details.numberofreviews)) * 600}px` }}
                   ></div>
                 </div>
               </div>
@@ -141,27 +138,27 @@ const Restaurant = () => {
         </div>
         <div>
           <picture className="w-[643px] h-[429px] block">
-            <img src={picture} alt="image.png" className="rounded-[23px]" />
+            <img src={res_details &&res_details.picture} alt="image.png" className="rounded-[23px]" />
           </picture>
         </div>
       </div>
 
       {/* Reviews */}
       <div >
-        <ReviewList reviews={reviews} />
+        {reviews && <ReviewList reviews={reviews} />}
       </div>
 
-      <div  onClick={openModal} className="right-10 fixed bottom-10 flex gap-3 text-2xl items-center	bg-sky-500 pd-10 text-white rounded-lg p-3 shadow-2xl">
+      <div  onClick={changeModal} className="select-none cursor-pointer	right-10 fixed bottom-10 flex gap-3 text-2xl items-center	bg-sky-500 pd-10 text-white rounded-lg p-3 shadow-2xl">
     
       <AiOutlineMessage size={40} />
         Post Review
       </div>
      
-      {isModalOpen && <Modal closeModal={closeModal} />}
+      {isModalOpen && <Modal closeModal={()=> {setIsModalOpen(false)}} />}
      
     </>
     
   );
 };
-
+  
 export default Restaurant;

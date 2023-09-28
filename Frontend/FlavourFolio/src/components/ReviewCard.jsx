@@ -1,13 +1,13 @@
 
 import '../styles/homepage.css';
+import { Link, useParams} from 'react-router-dom';
 
 const Card = ({data}) => {
-  const { Name, picture } = data;
-  // const tagsString = tags ? tags.join("•") : "";
   const rating = Number(data.average_rating).toFixed(2)
   return (
+    <Link to={`/restaurant/${data.hotel_name}`} >
     <div className="review-card my-10 mx-6 aspect-[.9] bg-[#E8E3E3] rounded-[30px] cursor-pointer">
-     <img src={picture} alt={data.hotel_name} className="rounded-t-[30px] w-full h-auto" />
+     <img src={data.picture} alt={data.hotel_name} className="rounded-t-[30px] w-full h-auto" />
       <div className="flex flex-col px-4 ml-2">
         <br/>
         <h2 className="mb-2 text-3xl font-semibold">
@@ -21,11 +21,9 @@ const Card = ({data}) => {
             {data.count}+ Reviews
           </span>
         </div>
-        {/* <div className="pb-4 font-semibold text-sg text-slate-600">
-          {tagsString}
-        </div> */}
       </div>
     </div>
+    </Link>
   );
 };
 

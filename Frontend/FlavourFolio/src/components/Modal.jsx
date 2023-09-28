@@ -1,48 +1,62 @@
 import "../styles/Modal.css"
+import { Flex, Text, Button, TextField, TextArea } from '@radix-ui/themes';
+import { Rating } from 'react-simple-star-rating'
 import { useState } from "react"
 import axios from "axios"
+
 const Modal=({closeModal})=>{
-    const [formData,setFormData]=useState({
-        ratings:"",
-        review:""})
-    const handleInputChange=(e)=>{
-            const { name, value } = e.target;
-            setFormData({ ...formData, [name]: value});
-          }
+    const [rating, setRating] = useState(0)
+    const handleClick = (newRating) => {
+        setRating(newRating);
+      };
+    const [review, setreview] = useState("")
+ 
     const handleFormSubmit= async(e)=>{
         e.preventDefault();
         try {
-            
             const postData = {
-              rating: formData.ratings,
-              review: formData.review,
-             
-            };
-        
-            
-            const response = await axios.post('/api/your-post-endpoint', postData);
+                user_id: 1,
+                hotel_name: "Shadab Restaurant",
+                review: review,
+                rating: rating
+            }
+            const response = await axios.post('http://localhost:8000/review', postData);
+            console.log(response, response.data, response.success, response.data.success)
+            if(response.data.success){
+                closeModal()
+            }
         }
         catch(error){
             console.log(error)
         }
     }
+    const ratingChanged = (newRating) => {
+        console.log(newRating);
+      };
           
     return(
-        <>
-        <form onSubmit={handleFormSubmit}>
-        <div className="main_Modal">
-            <button className="button_modal" onClick={closeModal}>Close</button>
+        <div className="right-10 fixed bottom-32 shadow-2xl px-16 py-10 bg-white rounded-xl">
+        <div className="text-xl font-bold">
             <div><h2>Rating</h2>
-                <input name={formData.ratings} type="number" onChange={handleInputChange}/>
+            {/* <StarRating initialRating={0}/> */}
+                <button className="w-10" onClick={()=> {console.log("adding");if(rating > 0) {console.log("adding");setRating(rating-1)}}} >-</button>                
+                    {rating}
+                <button className="w-10" onClick={()=> {if(rating < 5) {console.log("adding");setRating(rating+1)}}}>+</button>                
+
             </div>
+            <br/>
             <div><h2>Review</h2>
-                <input name={formData.review} type="text" onChange={handleInputChange}/>
+            <TextArea placeholder="Review"  onChange={(e)=>{setreview(e.target.value)}} name={review}/>
             </div>
-            <button className="submit_button" type="submit">Submit</button>
+            <br/>
+            <Button className="" onClick={handleFormSubmit}>
+            Submit
+            </Button>
         </div>
-        </form>
-        </>
+        </div>
     )
 }
 export default Modal
 
+
+  
