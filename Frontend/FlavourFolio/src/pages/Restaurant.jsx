@@ -1,5 +1,4 @@
 import Navbar from "../components/Navbar";
-import Card from "../components/card";
 import ReviewList from "../components/reviewComponent";
 
 const Restaurant = () => {
@@ -139,13 +138,6 @@ const Restaurant = () => {
       </div>
       <div>
         <ReviewList reviews={reviews} />
-        {/* <Card
-          content="Great food and great atmosphere! The chicken tikka masala and garlic naan tasted as if they had come straight from India itself. Because I was so pleased with the entrie I ended up ordering the gulab jamun desert and mango lassi beverage and again I was nothing but pleased! Also the employees and management were all very attentive and they made sure we had everything we needed from beginning to end. The manager Matt personally came around even to check on our experience!"
-          photo="https://images.unsplash.com/photo-1576828831022-ca41d3905fb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1923&q=80"
-          name="Riya"
-          rating={4.5}
-          emoji="😊"
-        /> */}
       </div>
     </>
   );

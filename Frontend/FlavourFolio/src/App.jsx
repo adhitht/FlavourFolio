@@ -10,7 +10,6 @@ function App() {
         <Route exact path='/' element={<HomePage />} />
         <Route path='/Login' element={<Login/>} />
         <Route path='/restaurant' element={<Restaurant/>} />
-        {/* Add more routes as needed */}
       </Routes>
     </>
   );

@@ -1,13 +1,12 @@
-import React from 'react';
-import Card from './card.jsx';
 import '../styles/reviewComponentStyles.css';
+import CommentCard from './CommentCard.jsx';
 
-const ReviewList = ({ reviews }) => {
+const ReviewList = (reviews) => {
     return (
         <div className="review-list">
             <h1 className="review-heading">Reviews</h1>
             {reviews.map((review, index) => (
-                <Card 
+                <CommentCard
                     key={index}
                     content={review.content}
                     photo={review.photo}
