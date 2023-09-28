@@ -32,6 +32,7 @@ const HomePage = () => {
     numberOfReviews: 250,
     tags: ["Chinese", "Continental", "Italic"],
     picture: "https://etimg.etb2bimg.com/photo/75161189.cms",
+    stars:{"5": 65, "4": 90, "3": 89, "2": 76,"1": 90}
   };
   return (
     <>
@@ -79,7 +80,6 @@ const HomePage = () => {
         <ReviewCard data={cardData} />
         <ReviewCard data={cardData} />
         <ReviewCard data={cardData} />
-
       </div>
     </>
   );
