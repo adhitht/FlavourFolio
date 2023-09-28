@@ -1,0 +1,20 @@
+.main_Modal{
+    position: fixed;
+    background-color: rgb(14 165 233);
+   top: 70%;
+   left:64%;
+   flex: row;
+   width:35vw;
+   height:15vw;
+   border-radius: 30px;
+   padding-left: 10%;
+   padding-top: 1%;
+   align-items: center;
+    
+}
+.button_modal{
+    margin-left: -10%;
+}
+.submit_button{
+    margin-left: 70%;
+}

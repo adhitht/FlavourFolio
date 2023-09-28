@@ -1,8 +1,17 @@
 import Navbar from "../components/Navbar";
 import ReviewList from "../components/reviewComponent";
 import {AiOutlineMessage} from 'react-icons/ai'
-
+import Modal from "../components/Modal";
+import { useState } from "react";
 const Restaurant = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+              
+  const openModal = () => {setIsModalOpen(true); };
+
+  
+  const closeModal = () => {setIsModalOpen(false); };
+
+  const handleSubmit = () => {openModal();};
   const cardData = {
     Name: "Tatva",
     Location: "Jubilee Hills",
@@ -12,7 +21,6 @@ const Restaurant = () => {
     picture: "https://etimg.etb2bimg.com/photo/75161189.cms",
     stars: { 5: 65, 4: 90, 3: 89, 2: 76, 1: 90 },
   };
-
   const { Name, Location, Rating, numberOfReviews, tags, picture, stars } =
     cardData;
   const tagsString = tags ? tags.join(" • ") : "";
@@ -143,11 +151,16 @@ const Restaurant = () => {
         <ReviewList reviews={reviews} />
       </div>
 
-      <div className="right-10 fixed bottom-10 flex gap-3 text-2xl items-center	bg-sky-500 pd-10 text-white rounded-lg p-3 shadow-2xl">
-      <AiOutlineMessage size={40}/>
+      <div  onClick={openModal} className="right-10 fixed bottom-10 flex gap-3 text-2xl items-center	bg-sky-500 pd-10 text-white rounded-lg p-3 shadow-2xl">
+    
+      <AiOutlineMessage size={40} />
         Post Review
       </div>
+     
+      {isModalOpen && <Modal closeModal={closeModal} />}
+     
     </>
+    
   );
 };
 
