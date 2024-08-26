@@ -1,8 +1,7 @@
-import "../styles/Modal.css"
-import { Flex, Text, Button, TextField, TextArea } from '@radix-ui/themes';
-import { Rating } from 'react-simple-star-rating'
-import { useState } from "react"
-import axios from "axios"
+import { Button, TextArea } from '@radix-ui/themes';
+import axios from "axios";
+import { useState } from "react";
+import "../styles/Modal.css";
 
 const Modal=({closeModal, res_name})=>{
     const [rating, setRating] = useState(0)
@@ -20,7 +19,7 @@ const Modal=({closeModal, res_name})=>{
                 review: review,
                 rating: rating
             }
-            const response = await axios.post('http://localhost:8000/review', postData);
+            const response = await axios.post(import.meta.env.VITE_API_URL+'/review', postData);
             console.log(response, response.data, response.success, response.data.success)
             if(response.data.success){
                 closeModal()

@@ -1,9 +1,9 @@
-import Navbar from "../components/Navbar";
 import CherryOnTop from "../assets/cherry-on-top.png";
-import axios from 'axios'
+import Navbar from "../components/Navbar";
+
 const Login = () => {
   const handleLogin = async () => {
-window.location.href = "http://localhost:8000/auth/google"
+window.location.href = import.meta.env.VITE_API_URL+"/auth/google"
   };
   return (
     <>
