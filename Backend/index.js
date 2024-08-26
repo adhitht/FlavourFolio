@@ -30,11 +30,7 @@ const server = http.createServer(app);
 // Connecting to PSQL server locally
 const { Pool } = pkg;
 const cur = new Pool({
-  user: "postgres",
-  password: "root",
-  host: "localhost",
-  database: "folio",
-  port: 5432,
+  connectionString: process.env.DATABASE_URL,
 });
 cur.connect();
 
