@@ -104,7 +104,7 @@ app.get(
     }
     const jwttoken = jwt.sign(req.user._json.toString(), "flavourfolio_secret");
     res.cookie("authtoken", jwttoken, { maxAge: 432000, httpOnly: false });
-    res.redirect("http://localhost:5173");
+    res.redirect(process.env.WEB_URL);
   }
 );
 
